@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire Candidat</title>
+    <span th:replace="~{home :: bootstrapImports}"></span>
+</head>
+<body>
+<header>
+    <span th:replace="~{home :: navbar}"></span>
+</header>
+
+<main class="container">
+    <div class="my-3 row">
+        <div class="col-8 offset-2 p-3 rounded text-bg-dark">
+            <h1 class="fw-light mb-5" >Candidat</h1>
+            <hr>
+            <form th:action="@{/addCandidat}" th:object="${candidat}" method="post">
+                <input th:field="*{id}" type="hidden">
+                <div class="form-group">
+                    <label for="offreEmploiId">Offre d'emploi :</label>
+                    <select id="offreEmploiId" class="form-control" name="offreEmploiId">
+                        <option value="">Sélectionnez une offre d'emploi</option>
+                        <option th:each="offreEmploi : ${offresEmploi}"
+                                th:value="${offreEmploi.id}"
+                                th:text="${offreEmploi.intitule}">
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom:</label>
+                    <input type="text" id="nom" name="nom" th:field="*{nom}" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="prenom" class="form-label">Prenom:</label>
+                    <input type="text" id="prenom" name="prenom" th:field="*{prenom}" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" id="email" name="email" required th:field="*{email}" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="telephone" class="form-label">Numéro de téléphone:</label>
+                    <input type="text" id="telephone" name="telephone" th:field="*{telephone}" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="dateNaissance" class="form-label">Date de naissance:</label>
+                    <input type="text" id="dateNaissance" name="dateNaissance" th:field="*{dateNaissance}" required class="form-control">
+                </div>
+
+
+                <button type="submit" class="btn btn-outline-success">Ajouter</button>
+
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>

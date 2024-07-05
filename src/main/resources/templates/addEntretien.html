@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire Entretien</title>
+    <span th:replace="~{home :: bootstrapImports}"></span>
+</head>
+<body>
+<header>
+    <span th:replace="~{home :: navbar}"></span>
+</header>
+<main class="container">
+    <div class="my-3 row">
+        <div class="col-8 offset-2 p-3 rounded text-bg-dark">
+            <h1 class="fw-light mb-5" >Candidat</h1>
+            <hr>
+            <form th:action="@{/addEntretien}" th:object="${entretien}" method="post">
+                <input th:field="*{id}" type="hidden">
+                <input type="hidden" th:field="*{candidat.id}" />
+                <input type="hidden" th:field="*{offreEmploi.id}" />
+                <div class="mb-3">
+                    <label for="dateEntretien" class="form-label">Date de l'entretien:</label>
+                    <input type="datetime-local" id="dateEntretien" name="dateEntretien" th:field="*{dateEntretien}" required class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-outline-success">Ajouter</button>
+
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
