@@ -36,11 +36,10 @@ public class EntretienController {
                           Model model) {
         Entretien entretien = new Entretien();
 
-        // Récupérer le candidat par son ID
+
         Candidat candidat = candidatService.getById(candidatId);
         entretien.setCandidat(candidat);
 
-        // Récupérer l'offre d'emploi par son ID
         OffreEmploi offreEmploi = offreEmploiService.getById(offreEmploiId);
         entretien.setOffreEmploi(offreEmploi);
 
